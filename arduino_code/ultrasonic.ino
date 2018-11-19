@@ -71,7 +71,7 @@ void scandist(){
   delay(300);
 }
 
-void auto_avoidance(){
+void auto_ultrasonic(){
   avanti();
   Serial.println("avanti");
   setspeed(autodrive_speed,autodrive_speed);
@@ -117,5 +117,9 @@ void auto_avoidance(){
 void initultrasonic() {
   pinMode(trigpin, OUTPUT);
   pinMode(echopin, INPUT);
+  digitalWrite(trigpin,LOW);
+  
+  servo.attach(servopin);
+  servo.write(90); // guarda a diritto
 }
 

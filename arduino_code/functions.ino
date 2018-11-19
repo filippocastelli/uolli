@@ -1,3 +1,5 @@
+// -- buzzer --
+
 void buzz_ON()   //open buzzer
 {
   digitalWrite(buzzpin, LOW);
@@ -13,5 +15,9 @@ void alarm(){
    buzz_OFF();
 }
 
+void initbuzzer(){
+  pinMode(buzzpin, OUTPUT);
+  buzz_OFF();  
+}
 
 
