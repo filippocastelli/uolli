@@ -19,7 +19,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(120);
+  servo.write(120);
   delay(100);
   dist_sxdiag = measuredist();
   if(dist_sxdiag<distancelimit){
@@ -27,7 +27,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(170); 
+  servo.write(170); 
   delay(300);
   dist_sx = measuredist();
   if(dist_sx<sidedistancelimit){
@@ -35,7 +35,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(120);
+  servo.write(120);
   delay(100);
   dist_sxdiag = measuredist();
   if(dist_sxdiag<distancelimit){
@@ -43,7 +43,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(90);
+  servo.write(90);
   delay(100);
   dist_avanti = measuredist();
   if(dist_avanti<distancelimit){
@@ -51,7 +51,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(40);
+  servo.write(40);
   delay(100);
   dist_rxdiag = measuredist();
   if(dist_rxdiag<distancelimit){
@@ -59,7 +59,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(0);
+  servo.write(0);
   delay(100);
   dist_rx = measuredist();
   if(dist_rx<sidedistancelimit){
@@ -67,7 +67,7 @@ void scandist(){
     Serial.println("stop");
     alarm();
     }
-  head.write(90);
+  servo.write(90);
   delay(300);
 }
 
@@ -76,7 +76,7 @@ void auto_avoidance(){
   Serial.println("avanti");
   setspeed(autodrive_speed,autodrive_speed);
   ++ncicli;
-  if(numcycles>100){ //ogni 100 controlliamo
+  if(ncicli>100){ //ogni 100 controlliamo
     scandist();
     if(dist_sx<sidedistancelimit || dist_sxdiag<distancelimit){
       destra();
@@ -84,7 +84,7 @@ void auto_avoidance(){
       setspeed(autodrive_speed,autodrive_speed);
       delay(tempo_svolta);
     }
-    if(rightscanval<sidedistancelimit || rdiagonalscanval<distancelimit){
+    if(dist_rx<sidedistancelimit || dist_rxdiag<distancelimit){
       sinistra();
       Serial.println("svolta sx");
       setspeed(autodrive_speed,autodrive_speed);
@@ -100,7 +100,7 @@ void auto_avoidance(){
           setspeed(autodrive_speed,autodrive_speed); //prob. inutile, devo testare sulla macchina
           delay(tempo_svolta);
         }
-    numcycles=0;
+    ncicli=0;
   }
   distance = measuredist(); // guarda a diritto
   if (distance<distancelimit){ // se segnale sporco ci fermiamo solo quando leggiamo 25 positivi
@@ -113,3 +113,9 @@ void auto_avoidance(){
     robaadiritto=0;
   }
 }
+
+void initultrasonic() {
+  pinMode(trigpin, OUTPUT);
+  pinMode(echopin, INPUT);
+}
+

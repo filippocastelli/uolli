@@ -1,10 +1,11 @@
 #include <Servo.h>
-#include <"conf.h">
+#include "conf.h"
 Servo servo;
 
 
 void setup() {
   initmotors();
+  initultrasonic();
 }
 
 void loop() {
