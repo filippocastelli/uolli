@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">android_code</string>
+    <string name="send_cmd">SEND CMD</string>
+    <string name="cmd">CMD</string>
+</resources>
