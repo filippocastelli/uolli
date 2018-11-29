@@ -4,18 +4,18 @@ Servo servo;
 
 
 void setup() {
+  initbuzzer();
   initmotors();
   initultrasonic();
-  initbuzzer();
+
   initirsensors();
 
   Serial.begin(9600);
+  Serial1.begin(9600);
 }
 
 void loop() {
   uart_comm();
+  //serialcopy();
   guida();
 }
-
-
-
