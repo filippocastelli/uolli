@@ -66,6 +66,7 @@ void uart_comm()
     case 5:stato_guida=GUIDA_MANUALE; azione=FERMA;buzz_OFF();Serial.println("STOP");break;
     case 3:stato_guida=ULTRASONIC; Serial.println("ULTRASONIC...");break;
     case 1:stato_guida=LINE_FOLLOW; Serial.println("LINE FOLLOW...");break;
+    case 9:stato_guida=IR; Serial.println("IR);  
     default:break;
   }
 }
@@ -75,8 +76,12 @@ void guida()
 {
 //  Serial.println("sto facendo: ");
 //  Serial.println(azione);
-  if(stato_guida == GUIDA_MANUALE)
+  if(stato_guida == GUIDA_MANUALE | stato_guida == IR)
   {
+    if (stato_guida == IR){
+      azione = FERMA;
+      ir_getaction();
+    }
     switch (azione) 
     {
       case AVANTI:

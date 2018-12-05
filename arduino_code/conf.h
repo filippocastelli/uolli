@@ -27,6 +27,13 @@
 // IR RECEIVER
 #define IRreceiverpin 5
 
+#define IR_AVANTI       0x00FF18E7     
+#define IR_INDIETRO     0x00FF4AB5     
+#define IR_DX           0x00FF5AA5       
+#define IR_SX           0x00FF10EF      
+#define IR_STOP          0x00FF38C7      
+#define IR_turnsmallleft 0x00FFB04F  
+
 #define autodrive_speed 200
 #define linefollow_speed 200
 
