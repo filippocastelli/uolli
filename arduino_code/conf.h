@@ -38,8 +38,8 @@
 #define linefollow_speed 200
 
 int dist_sx, dist_sxdiag, dist_rx, dist_rxdiag, dist_avanti;
-int distancelimit = 30; //distance limit for obstacles in front           
-int sidedistancelimit = 30; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
+int distancelimit = 15; //distance limit for obstacles in front           
+int sidedistancelimit = 15; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
 int tempo_svolta = 700; //time the car spends turning (miliseconds)
 int distance;
 int robaadiritto;
@@ -59,7 +59,8 @@ enum SG
 {
   GUIDA_MANUALE,
   LINE_FOLLOW,
-  ULTRASONIC
+  ULTRASONIC,
+  IRMODE
 }stato_guida=GUIDA_MANUALE;
 
 enum AZIONI
@@ -71,6 +72,7 @@ enum AZIONI
   FERMA,
   DEF
 }azione=DEF;
+
 
 
 bool stopFlag = true;

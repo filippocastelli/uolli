@@ -8,7 +8,7 @@ void setup() {
   initbuzzer();
   initmotors();
   initultrasonic();
-
+  initirguide();
   initirsensors();
 
   Serial.begin(9600);
@@ -16,7 +16,8 @@ void setup() {
 }
 
 void loop() {
-  uart_comm();
+  receive_commands();
   //serialcopy();
   guida();
+  
 }

@@ -1,4 +1,4 @@
-void uart_comm()
+void receive_commands()
 {
 
 //  char istruzioni=0;
@@ -66,8 +66,12 @@ void uart_comm()
     case 5:stato_guida=GUIDA_MANUALE; azione=FERMA;buzz_OFF();Serial.println("STOP");break;
     case 3:stato_guida=ULTRASONIC; Serial.println("ULTRASONIC...");break;
     case 1:stato_guida=LINE_FOLLOW; Serial.println("LINE FOLLOW...");break;
-    case 9:stato_guida=IR; Serial.println("IR);  
+    case 7:stato_guida=IRMODE; Serial.println("IRMODE...");  
     default:break;
+  }
+
+  if (stato_guida == IRMODE){
+    azione = ir_getaction();
   }
 }
 
@@ -76,15 +80,14 @@ void guida()
 {
 //  Serial.println("sto facendo: ");
 //  Serial.println(azione);
-  if(stato_guida == GUIDA_MANUALE | stato_guida == IR)
+  if(stato_guida == GUIDA_MANUALE || stato_guida == IRMODE)
   {
-    if (stato_guida == IR){
-      azione = FERMA;
-      ir_getaction();
-    }
+    //Serial.println(azione);
     switch (azione) 
     {
       case AVANTI:
+          //Serial.println("hey");
+          //Serial.println(azione);
           avanti();
           setspeed(255,255);
           RunningFlag = true;
