@@ -25,7 +25,7 @@ void scandist(){
   Serial.println(sidedistancelimit);                  
   dist_avanti = measuredist();
   Serial.println(dist_avanti);
-  if(dist_avanti<distancelimit){
+  if(dist_avanti< distancelimit){
     ferma();
     Serial.println("stop");
     alarm();
@@ -126,15 +126,13 @@ void auto_ultrasonic(){
       ++robaadiritto;}
   if (distance>distancelimit){
       robaadiritto=0;}
-  if (robaadiritto > 25){
+  if (robaadiritto > 15){
     ferma(); // c'è roba a diritto
     Serial.println("stop");
     robaadiritto=0;
   }
 
 }
-
-
 
 void initultrasonic() {
   pinMode(trigpin, OUTPUT);

@@ -21,8 +21,14 @@
 #define IRsensor4pin 32
 
 // buzzer
-#define buzzpin 6 //pwm
+#define buzzpin 6
 
+#define btnpin 33
+#define led1pin 34
+#define led2pin 35
+#define led3pin 36
+#define led4pin 37
+#define led5pin 38
 
 // IR RECEIVER
 #define IRreceiverpin 5
@@ -32,7 +38,8 @@
 #define IR_DX           0x00FF5AA5       
 #define IR_SX           0x00FF10EF      
 #define IR_STOP          0x00FF38C7      
-#define IR_turnsmallleft 0x00FFB04F  
+#define IR_turnsmallleft 0x00FFB04F
+
 
 #define autodrive_speed 200
 #define linefollow_speed 200
@@ -53,15 +60,23 @@ char buffUART[MAX_PACKETSIZE];
 unsigned int buffUARTIndex = 0;
 unsigned long preUARTTick = 0;
 
+//enum SG
+//{
+//  GUIDA_MANUALE = 0,
+//  LINE_FOLLOW = 1,
+//  ULTRASONIC = 2,
+//  IRMODE = 3
+//}stato_guida=GUIDA_MANUALE;
+//
+//char drivestatus[] = {"M", "L", "A", "I"};
+//char stato_guida = "M";
 
+#define GUIDA_MANUALE 0
+#define LINE_FOLLOW 1
+#define ULTRASONIC 2
+#define IRMODE 3
 
-enum SG
-{
-  GUIDA_MANUALE,
-  LINE_FOLLOW,
-  ULTRASONIC,
-  IRMODE
-}stato_guida=GUIDA_MANUALE;
+int stato_guida = 0;
 
 enum AZIONI
 { 
@@ -73,7 +88,7 @@ enum AZIONI
   DEF
 }azione=DEF;
 
-
+int mode_leds[4] = {led1pin, led2pin, led3pin, led4pin};
 
 bool stopFlag = true;
 bool RunningFlag = false;
@@ -83,3 +98,6 @@ uint32_t RunningTime=0;
 char inByte[1];
 
 unsigned long tempo;
+
+//bool bntpressable = true;
+unsigned long btntime;
