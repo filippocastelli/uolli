@@ -41,8 +41,8 @@
 #define IR_turnsmallleft 0x00FFB04F
 
 
-#define autodrive_speed 200
-#define linefollow_speed 200
+#define autodrive_speed 100
+#define linefollow_speed 100
 
 int dist_sx, dist_sxdiag, dist_rx, dist_rxdiag, dist_avanti;
 int distancelimit = 15; //distance limit for obstacles in front           
@@ -101,3 +101,5 @@ unsigned long tempo;
 
 //bool bntpressable = true;
 unsigned long btntime;
+
+bool invert_ir = false;

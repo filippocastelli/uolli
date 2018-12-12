@@ -12,6 +12,13 @@ void measure_ir(){
   sensori_ir[2]=digitalRead(IRsensor2pin);
   sensori_ir[3]=digitalRead(IRsensor3pin);
   sensori_ir[4]=digitalRead(IRsensor4pin);
+
+  if(invert_ir){
+    for(int i = 0; i < 5; i++){
+      sensori_ir[i] = (sensori_ir[i] == HIGH ? LOW : HIGH);
+      }
+    }
+  //Serial.println(sensori_ir);
 }
 
 //follow_line
@@ -51,4 +58,3 @@ void follow_line(){
     }
   }
 }
-

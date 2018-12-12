@@ -14,6 +14,7 @@ void button_tic(){
     change_drivemode();
     light_leds();
     btntime = millis();
+    Serial.println("BUTTON PRESSED");
     }
 }
 
@@ -38,5 +39,3 @@ void light_leds(){
     }
   }
 }
-
-

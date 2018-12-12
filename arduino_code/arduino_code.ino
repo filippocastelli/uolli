@@ -5,7 +5,7 @@ Servo servo;
 
 
 void setup() {
-  initleds();
+  //initleds();
   initbuzzer();
   initmotors();
   initultrasonic();
@@ -18,7 +18,7 @@ void setup() {
 
 void loop() {
   receive_commands();
-  button_tic();
+  //button_tic();
   //serialcopy();
   guida();
   
