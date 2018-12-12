@@ -41,9 +41,9 @@ void follow_line(){
       setspeed(linefollow_speed,linefollow_speed);
     }
     else if(sensori_ir[1]==HIGH && sensori_ir[3]==LOW){ //sensore dx su linea nera
-       sinistra();  //sinistra
-       Serial.println("Sinistra!");
-       setspeed(0,linefollow_speed);
+      sinistra();  //sinistra
+      Serial.println("Sinistra!");
+      setspeed(0,linefollow_speed);
     }
     else if(sensori_ir[1]==LOW && sensori_ir[3]==HIGH){  //sensore sx su linea nera
       destra();  //gira a destra
@@ -58,9 +58,9 @@ void follow_line(){
       setspeed(0,linefollow_speed);
     }
     else if(sensori_ir[1]==LOW && sensori_ir[3]==HIGH){ 
-       destra();
-       Serial.println("Destra!");
-       setspeed(linefollow_speed,0);
+      destra();
+      Serial.println("Destra!");
+      setspeed(linefollow_speed,0);
     }
     //controllo sensori periferici
     else if(sensori_ir[0]==HIGH && sensori_ir[4]==LOW){
