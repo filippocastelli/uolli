@@ -1,5 +1,6 @@
 void avanti(void)  
 {
+  //Serial.println("avanti");
   digitalWrite(L1pin, HIGH);
   digitalWrite(L2pin,LOW);
   digitalWrite(R1pin,HIGH);
@@ -50,4 +51,3 @@ void initmotors()
   pinMode(speed_rpin, OUTPUT); 
   ferma();
 }
-
