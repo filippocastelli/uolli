@@ -43,7 +43,7 @@ void receive_commands()
       size_t message_length=Serial1.available();
 //      Serial.println("message_length: ");
 //      Serial.println(message_length);
-      temp = Serial1.read();
+      temp = Serial1.parseInt();
 //      if(message_length<2) Serial1.readBytes(temp,message_length);
       Serial.println("istruzioni ricevute:");
       Serial.println(temp);
@@ -156,7 +156,11 @@ void guida()
 
 void serialcopy(){
   if(Serial1.available()){
-    Serial1.readBytes(inByte, 1);
-    Serial.println(inByte);
+    int intByte = Serial1.parseInt();
+    Serial.println(intByte);
+    //Serial.println(intByte);
+    if (intByte == 2){
+      Serial.println("ciao");
+    }
   }
 }
