@@ -10,8 +10,8 @@
 #define servopin 4
 
 //ultrasonic
-#define echopin 11 // Ultrasonic Echo pin connect to D11
-#define trigpin 10  // Ultrasonic Trig pin connect to D12
+#define echopin 11 //PWM
+#define trigpin 10 //PWM
 
 //ir sensors
 #define IRsensor4pin 28
@@ -48,9 +48,9 @@
 #define manual_time 100
 
 int dist_sx, dist_sxdiag, dist_rx, dist_rxdiag, dist_avanti;
-int distancelimit = 15; //distance limit for obstacles in front           
-int sidedistancelimit = 15; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
-int tempo_svolta = 700; //time the car spends turning (miliseconds)
+int distancelimit = 15;
+int sidedistancelimit = 15;
+int tempo_svolta = 250;
 int distance;
 int robaadiritto;
 int ncicli = 0;
@@ -62,17 +62,6 @@ int sensori_ir[5];
 char buffUART[MAX_PACKETSIZE];
 unsigned int buffUARTIndex = 0;
 unsigned long preUARTTick = 0;
-
-//enum SG
-//{
-//  GUIDA_MANUALE = 0,
-//  LINE_FOLLOW = 1,
-//  ULTRASONIC = 2,
-//  IRMODE = 3
-//}stato_guida=GUIDA_MANUALE;
-//
-//char drivestatus[] = {"M", "L", "A", "I"};
-//char stato_guida = "M";
 
 #define GUIDA_MANUALE 0
 #define LINE_FOLLOW 1

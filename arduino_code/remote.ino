@@ -1,62 +1,17 @@
 void receive_commands()
 {
-
-//  char istruzioni=0;
-//  if(Serial1.available()) 
-//  {
-//    size_t message_length = Serial1.available();
-//    uint8_t serial_buffer[message_length + 1];
-//    serial_buffer[message_length] = 0x00;
-//    Serial1.readBytes(serial_buffer, message_length);
-//    //parseUartPackage((char*)serial_buffer);
-//    memcpy(buffUART + buffUARTIndex, serial_buffer, message_length);
-//    buffUARTIndex += message_length;
-//    preUARTTick = millis();
-//    if(buffUARTIndex >= MAX_PACKETSIZE - 1) //messaggio troppo lungo
-//    {
-//      buffUARTIndex = MAX_PACKETSIZE - 2;
-//      preUARTTick = preUARTTick - 200;
-//    }
-//  }
-//  
-//  if(buffUARTIndex > 0 && (millis() - preUARTTick >= 100)) //messaggio lunghezza giusta, 100 ms per sicurezza
-//  { //data ready
-//    buffUART[buffUARTIndex] = 0x00;
-//    if(buffUART[0]=='C') 
-//    {
-//      Serial.println(buffUART);
-//      Serial.println("You have modified the parameters!");//indicates that the obstacle avoidance distance parameter has been modified
-//      sscanf(buffUART,"CMD%d,%d,%d",&distancelimit,&sidedistancelimit,&tempo_svolta);
-//      // Serial.println(distancelimit);
-//      // Serial.println(sidedistancelimit);
-//      // Serial.println(turntime);
-//    }
-//    else  istruzioni=buffUART[0];
-//    buffUARTIndex = 0;
-//  }
   int istruzioni = -1;
   if(Serial1.available()>0)
   {
-//      char temp[1];
       int temp = -1;
-      //memset(temp,0x00,32);
       size_t message_length=Serial1.available();
-//      Serial.println("message_length: ");
-//      Serial.println(message_length);
       temp = Serial1.parseInt();
-//      if(message_length<2) Serial1.readBytes(temp,message_length);
 
       if(temp!=-1 && temp != 0){
         istruzioni = temp;
         Serial.println("istruzioni ricevute:");
         Serial.println(temp);
       }
-//      if(temp[0]=='C') {
-//        Serial.println(temp);
-//        Serial.println("Parametri modificati!");
-//        sscanf(temp,"CMD%d,%d,%d",&distancelimit,&sidedistancelimit,&tempo_svolta);
-//      }
-//      else if(message_length<=1&&temp!=NULL) istruzioni=temp[0];
 
   }
 
@@ -89,8 +44,6 @@ void guida()
     switch (azione) 
     {
       case AVANTI:
-          //Serial.println("hey");
-          //Serial.println(azione);
           avanti();
           setspeed(manual_speed,manual_speed);
           RunningFlag = true;
@@ -126,7 +79,6 @@ void guida()
           break;
     }
     azione=DEF;
-    //keep the car running for 100ms
     if(millis()-RunningTime>=manual_time)
     {
       RunningTime=millis();
