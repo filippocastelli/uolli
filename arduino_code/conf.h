@@ -14,11 +14,11 @@
 #define trigpin 10  // Ultrasonic Trig pin connect to D12
 
 //ir sensors
-#define IRsensor0pin 28
-#define IRsensor1pin 29
+#define IRsensor4pin 28
+#define IRsensor3pin 29
 #define IRsensor2pin 30
-#define IRsensor3pin 31
-#define IRsensor4pin 32
+#define IRsensor1pin 31
+#define IRsensor0pin 32
 
 // buzzer
 #define buzzpin 6
@@ -42,7 +42,7 @@
 
 
 #define autodrive_speed 100
-#define linefollow_speed 100
+#define linefollow_speed 88
 #define manual_speed 92
 
 #define manual_time 100
