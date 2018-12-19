@@ -45,9 +45,12 @@ void receive_commands()
 //      Serial.println(message_length);
       temp = Serial1.parseInt();
 //      if(message_length<2) Serial1.readBytes(temp,message_length);
-      Serial.println("istruzioni ricevute:");
-      Serial.println(temp);
-      if(temp!=-1) istruzioni = temp;
+
+      if(temp!=-1 && temp != 0){
+        istruzioni = temp;
+        Serial.println("istruzioni ricevute:");
+        Serial.println(temp);
+      }
 //      if(temp[0]=='C') {
 //        Serial.println(temp);
 //        Serial.println("Parametri modificati!");
@@ -89,28 +92,28 @@ void guida()
           //Serial.println("hey");
           //Serial.println(azione);
           avanti();
-          setspeed(255,255);
+          setspeed(manual_speed,manual_speed);
           RunningFlag = true;
           RunningTimeCnt = 1;
           RunningTime=millis();
           break;
       case SINISTRA: 
           sinistra();
-          setspeed(255,255);
+          setspeed(manual_speed,manual_speed);
           RunningFlag = true;
           RunningTimeCnt = 1;
           RunningTime=millis();
           break;
       case DESTRA:  
           destra();
-          setspeed(255,255);
+          setspeed(manual_speed,manual_speed);
           RunningFlag = true;
           RunningTimeCnt = 1;
           RunningTime=millis();
           break;
       case INDIETRO: 
           indietro();
-          setspeed(255,255);
+          setspeed(manual_speed,manual_speed);
           RunningFlag = true;
           RunningTimeCnt = 1;
           RunningTime=millis();
@@ -124,7 +127,7 @@ void guida()
     }
     azione=DEF;
     //keep the car running for 100ms
-    if(millis()-RunningTime>=100)
+    if(millis()-RunningTime>=manual_time)
     {
       RunningTime=millis();
       if(RunningFlag == true) 

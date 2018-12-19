@@ -8,7 +8,7 @@
 #include <ESP8266WebServer.h>
 
 // Replace with your network credentials
-const char* ssid     = "PAPAMOBILE";
+const char* ssid     = "Uolli_WiFi";
 const char* password = "ulbabrab";
 
 
@@ -122,7 +122,7 @@ void loop(){
             client.println(".button2 {background-color: #77878A;}</style></head>");
             
             // Web Page Heading
-            client.println("<body><h1>PAPAMOBILE</h1>");
+            client.println("<body><h1>Uolli</h1>");
             
             client.println("<p>mod. corrente " + drive_status + "</p>");
             client.println("<p><a href=\"/auto\"><button class=\"button\">AUTO</button></a>");

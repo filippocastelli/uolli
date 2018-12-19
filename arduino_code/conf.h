@@ -43,6 +43,9 @@
 
 #define autodrive_speed 100
 #define linefollow_speed 100
+#define manual_speed 92
+
+#define manual_time 100
 
 int dist_sx, dist_sxdiag, dist_rx, dist_rxdiag, dist_avanti;
 int distancelimit = 15; //distance limit for obstacles in front           
