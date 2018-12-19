@@ -42,8 +42,8 @@
 
 
 #define autodrive_speed 100
-#define linefollow_speed 88
-#define manual_speed 92
+#define linefollow_speed 105
+#define manual_speed 110
 
 #define manual_time 100
 
@@ -95,3 +95,5 @@ unsigned long tempo;
 unsigned long btntime;
 
 bool invert_ir = false;
+
+bool primae_noctis = true;

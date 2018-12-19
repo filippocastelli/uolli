@@ -23,7 +23,7 @@ void receive_commands()
     case 8:stato_guida=GUIDA_MANUALE; azione=INDIETRO; Serial.println("INDIETRO");break;
     case 5:stato_guida=GUIDA_MANUALE; azione=FERMA;buzz_OFF();Serial.println("STOP");break;
     case 3:stato_guida=ULTRASONIC; Serial.println("ULTRASONIC...");break;
-    case 1:stato_guida=LINE_FOLLOW; Serial.println("LINE FOLLOW...");break;
+    case 1:stato_guida=LINE_FOLLOW; Serial.println("LINE FOLLOW..."); primae_noctis = true; break;
     case 7:stato_guida=IRMODE; Serial.println("IRMODE...");  
     default:break;
   }
@@ -101,7 +101,7 @@ void guida()
   }
   else if(stato_guida==LINE_FOLLOW)
   {
-    follow_line();
+    primae_noctis = follow_line(primae_noctis);
   }
   else if(stato_guida==ULTRASONIC)
   {

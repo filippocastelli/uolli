@@ -32,8 +32,14 @@ void measure_ir(){
 }
 
 //follow_line
-void follow_line(){
+bool follow_line(bool flag){
   measure_ir();
+  if (flag && sensori_ir[0] == LOW && sensori_ir[4] == LOW && sensori_ir[3] == LOW && sensori_ir[1] == LOW && sensori_ir[2] == LOW){
+      avanti();
+      Serial.println("avanti ma pochino eh");
+      setspeed(linefollow_speed, linefollow_speed);
+      return true;
+    }
   if(sensori_ir[2]==HIGH){ //sensore centrale su linea nera
     if(sensori_ir[1]==LOW && sensori_ir[3]==LOW){ //sensori adiacenti su bianco
       avanti();  //finchè la barca va
@@ -74,4 +80,5 @@ void follow_line(){
       setspeed(linefollow_speed, 0);
     }
   }
+  return false;
 }
