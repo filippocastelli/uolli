@@ -36,7 +36,3 @@ AZIONI ir_getaction(){
     return azione;
   }
 }
-
-void irguida(){
-  ir_getaction();
-}
