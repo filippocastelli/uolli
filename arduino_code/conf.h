@@ -48,12 +48,15 @@
 #define manual_time 100
 
 int dist_sx, dist_sxdiag, dist_rx, dist_rxdiag, dist_avanti;
-int distancelimit = 15;
-int sidedistancelimit = 15;
-int tempo_svolta = 250;
+int distancelimit = 25;
+int sidedistancelimit = 20;
+int tempo_svolta = 350;
 int distance;
 int robaadiritto;
 int ncicli = 0;
+
+int scandelay = 55;
+int scandist_freq = 10;
 
 int sensori_ir[5];
 

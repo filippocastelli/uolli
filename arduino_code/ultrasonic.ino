@@ -31,7 +31,7 @@ void scandist(){
     alarm();
     }
   servo.write(120);
-  delay(100);
+  delay(scandelay);
   dist_sxdiag = measuredist();
   if(dist_sxdiag<distancelimit){
     ferma();
@@ -39,7 +39,7 @@ void scandist(){
     alarm();
     }
   servo.write(170); 
-  delay(100);
+  delay(scandelay);
   dist_sx = measuredist();
   if(dist_sx<sidedistancelimit){
     ferma();
@@ -47,7 +47,7 @@ void scandist(){
     alarm();
     }
   servo.write(120);
-  delay(100);
+  delay(scandelay);
   dist_sxdiag = measuredist();
   if(dist_sxdiag<distancelimit){
     ferma();
@@ -55,7 +55,7 @@ void scandist(){
     alarm();
     }
   servo.write(90);
-  delay(100);
+  delay(scandelay);
   dist_avanti = measuredist();
   if(dist_avanti<distancelimit){
     ferma();
@@ -63,7 +63,7 @@ void scandist(){
     alarm();
     }
   servo.write(40);
-  delay(100);
+  delay(scandelay);
   dist_rxdiag = measuredist();
   if(dist_rxdiag<distancelimit){
     ferma();
@@ -71,7 +71,7 @@ void scandist(){
     alarm();
     }
   servo.write(0);
-  delay(100);
+  delay(scandelay);
   dist_rx = measuredist();
   if(dist_rx<sidedistancelimit){
     ferma();
@@ -79,7 +79,7 @@ void scandist(){
     alarm();
     }
   servo.write(90);
-  delay(100);
+  delay(scandelay);
 }
 
 void auto_ultrasonic(){
@@ -90,7 +90,7 @@ void auto_ultrasonic(){
   ++ncicli;
   Serial.println("ciclo");
   Serial.println(ncicli);
-  if(ncicli>20){ //ogni 100 controlliamo
+  if(ncicli>scandist_freq){ //ogni 100 controlliamo
     scandist();
     if(dist_sx<sidedistancelimit || dist_sxdiag<distancelimit){
       destra();
@@ -109,7 +109,7 @@ void auto_ultrasonic(){
           indietro();
           Serial.println("AUTO: torna indietro");
           setspeed(autodrive_speed,autodrive_speed);
-          delay(2*tempo_svolta);
+          delay(3.5*tempo_svolta);
           sinistra();
           setspeed(autodrive_speed,autodrive_speed); //prob. inutile, devo testare sulla macchina
           delay(tempo_svolta);
