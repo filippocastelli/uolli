@@ -10,4 +10,4 @@ Uolli supporta attualmente:
 * Guida "automatica" con sensori di prossimità HSR04
 
 Il cervello di Uolli è un' Arduino Mega 2560 connessa ad un ESP8266, le schematiche sono in formato Fritzing in `uolli.fzz`
-è inoltre disponibile una presentazione powerpoint del progetto in `rutti_al_chimichurri.pptx`.
+è inoltre disponibile una presentazione powerpoint del progetto in `Presentazione.pptx`.
